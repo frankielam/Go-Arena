@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	s "strings"
+)
+
+var p = fmt.Println
+
+func main() {
+	p("Contains: ", s.Contains("test", "es"))
+	p("Count:    ", s.Count("test", "t"))
+	p("HasPrefix:", s.HasPrefix("test", "te"))
+	p("HasSuffix:", s.HasSuffix("test", "te"))
+	p("Index:    ", s.Index("test", "e"))
+	p("Join :    ", s.Join([]string{"x", "y"}, "z"))
+	p("Repeat:   ", s.Repeat("y", 2), "ds")
+	p("Replace:  ", s.Replace("foo", "o", "0", 1))
+	p("Split:    ", s.Split("a-b-c-d", "-"))
+	p("ToLower   ", s.ToLower("TEST"))
+	p("ToUpper   ", s.ToUpper("test"))
+	p()
+
+	p("Len:     ", len("hello"))
+}
