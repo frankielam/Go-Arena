@@ -43,6 +43,7 @@ func main() {
 	rand.Seed(42)
 	fmt.Println(rand.Intn(100))
 	
+	rand.Seed(time.Now().UnixNano())
 
 	
 
