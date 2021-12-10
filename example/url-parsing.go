@@ -8,14 +8,15 @@ import (
 
 func main() {
 	p := fmt.Println
-	s := "postgres://user:password@host.com:1234/path?key=value#f"
-
+	// s := "postgres://user:password@host.com:1234/path?key=value#f"
+	s := "https://github.com/frankielam/Go-Arena.git?key=yy#zz"
+	p(s)
 	u, err := url.Parse(s)
 	if err != nil {
 		panic(err)
 	}
 
-	p(u.Scheme)
+	p("scheme", u.Scheme)
 
 	p(u.User)
 	p(u.User.Username())
@@ -23,12 +24,12 @@ func main() {
 	pass, _ := u.User.Password()
 	p(pass)
 
-	p(u.Host)
+	p("host", u.Host)
 	host, port, _ := net.SplitHostPort(u.Host)
 	p(host)
 	p(port)
 
-	p(u.Path)
+	p("path", u.Path)
 	p(u.Fragment)
 	p(u.RawQuery)
 	m, _ := url.ParseQuery(u.RawQuery)
