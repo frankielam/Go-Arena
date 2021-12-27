@@ -28,16 +28,27 @@ func login(w http.ResponseWriter, r *http.Request) {
         t.Execute(w, nil)
     } else {
         r.ParseForm()
-	fmt.Println("username:", r.Form["username"], "password:", r.Form["password"])
+	    fmt.Println("username:", r.Form["username"], "password:", r.Form["password"])
+        username, password := fmt.Sprint(r.Form["username"]), fmt.Sprint(r.Form["password"])
+
+        if username == password {
+            t, _ := template.ParseFiles("index.gtpl")
+            t.Execute(w,  r.Form["username"])
+        } else {
+            t, _ := template.ParseFiles("error.gtpl")
+            t.Execute(w, nil)
+        }
     }
 }
 
 func main() {
     http.HandleFunc("/", sayHello) 
     http.HandleFunc("/login", login) 
+    fmt.Println("http://127.0.0.1:8090/login")
     err := http.ListenAndServe(":8090", nil)
+
     if err != nil {
         log.Fatal("ListenAndServe:", err)
     }
-    fmt.Println("http://127.0.0.1:8080/login")
+    
 }
