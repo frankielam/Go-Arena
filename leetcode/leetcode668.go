@@ -21,6 +21,7 @@ func findKthNumber(m int, n int, k int) int {
     return left
 }
 
+// https://leetcode.cn/problems/kth-smallest-number-in-multiplication-table/
 func main() {
 	fmt.Println(findKthNumber(9895, 28405, 100787757))
 }
